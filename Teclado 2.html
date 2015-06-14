@@ -1,0 +1,65 @@
+<html>
+<head>
+  <meta charset="utf-8">
+<title>Votación</title>
+<script>
+    texto="";
+     var Tletras=new Array ("0","1","2","3","4","5","6","7","8","9");
+     var z=0;
+     var Numero=true
+     function anadir(letra){
+  texto=document.f.barra.value;
+  if(letra=="\b"){
+  numeroLetras=texto.length-1
+  texto=texto.substring(0,numeroLetras);
+  }
+  else{
+  if(!Numero){letra=letra.toLowerCase()}
+  texto=texto+letra;
+  }
+  document.f.barra.value=texto;
+  }
+  function mostrar(){
+  if (z==0){z=1;document.getElementById('botones').style.visibility="visible";pregunta.innerHTML="Ocultar teclado";}
+  else {z=0;document.getElementById('botones').style.visibility="hidden";pregunta.innerHTML="Mostrar teclado";}
+  }
+</script>
+</head>
+<body style="font:normal 10px/15px verdana">
+<br>
+<center>
+  <table>
+    <form name="f" method="post">
+    <tr>
+      <td>Número de DUI:</td>
+      <td>
+         <div style="width:300px">
+         <input type="Text" name="barra" style="width:300px;border:solid 2px black" maxlength="10" placeholder="00000000-0">
+      </td>
+    </tr><br>
+    <tr>
+      <td colspan="3"><center><a id="pregunta" href=javascript:mostrar()>Mostrar teclado</a></center></td>
+    </tr>
+    <tr>
+      <td colspan="3"><div align=center id="botones" style="font:normal 8px/4px verdana;visibility:hidden;"></div></td>
+    </tr>
+    <tr>
+      <td colspan="3"><center><input style="width:80px" type="submit" name="Entrar" value="Votar" title="click para poder votar"></center></td>
+    </tr>
+<script>
+var c="0";
+var letras="";
+var p=0;
+for (a=0;a<Tletras.length;a++){
+letras=letras+"<input style='width:35px;' type='Button' value="+Tletras[a]+" onclick=anadir('"+Tletras[a]+"')>&nbsp;";
+p=p+1;
+if(p==10){p=0;letras=letras+"<br><br>";}
+}
+document.getElementById('botones').innerHTML=letras+"<input style='width:40px;' alt='Borrar' type='Button' value=&laquo; onClick=anadir('\b')><br><font style='font:20px'></font>";
+</script>
+</div>
+</table>
+</center>
+</form>
+</body>
+</html>
